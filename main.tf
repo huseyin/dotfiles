@@ -13,4 +13,3 @@ resource "scaleway_server" "machine" {
 resource "scaleway_ip" "value" {
   server = "${scaleway_server.machine.id}"
 }
-
