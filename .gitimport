@@ -7,8 +7,15 @@
   files:
     - source: lib/scripts/base/font.sh
       target: scripts/catalog/base
+
     - source: lib/scripts/base/staff.sh
       target: scripts/catalog/base
+
     - source: lib/scripts/base/timezone.sh
       target: scripts/catalog/base
 
+    - source: lib/scripts/development/debian.sh
+      target: scripts/catalog/development
+      
+    - source: lib/scripts/development/shell.sh
+      target: scripts/catalog/development
