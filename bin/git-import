@@ -1,7 +1,5 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
-#
-# Originally written by Recai Oktaş (@roktas). Check out: https://github.com/omu/zoo/master/git-import
 
 require 'fileutils'
 require 'open3'

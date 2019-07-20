@@ -1,0 +1,14 @@
+- remote: https://github.com/omu/zoo
+  files:
+    - source: git-import/git-import
+      target: bin
+
+- remote: https://github.com/omu/debian
+  files:
+    - source: lib/scripts/base/font.sh
+      target: scripts/catalog/base
+    - source: lib/scripts/base/staff.sh
+      target: scripts/catalog/base
+    - source: lib/scripts/base/timezone.sh
+      target: scripts/catalog/base
+
