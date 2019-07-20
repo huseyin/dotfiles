@@ -1,6 +1,9 @@
 Terraformed
 ===========
 
+Main goal is to create custom development environments that can be run everywhere. Currently, it only focuses on my
+problem and cannot be used for another project.
+
 Dependencies
 ------------
 
