@@ -1,5 +1,5 @@
-Terraformed
-===========
+Terrawork
+=========
 
 Main goal is to create custom development environments that can be run everywhere. Currently, it only focuses on my
 problem and cannot be used for another project.
@@ -13,5 +13,3 @@ fetch all the changes for those externals:
 ```sh
 git-import
 ```
-
-By the way, many thanks to [@roktas](https://github.com/roktas) :heart:
