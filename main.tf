@@ -1,34 +1,15 @@
+variable "scaleway_organization_key" {}
+variable "scaleway_secret_key" {}
+variable "scaleway_region" {}
+variable "machine_name" {}
+
 provider "scaleway" {
-  organization = "${var.organization_key}"
-  token        = "${var.secret_key}"
-  region       = "${var.region}"
+  organization = "${var.scaleway_organization_key}"
+  token        = "${var.scaleway_secret_key}"
+  region       = "${var.scaleway_region}"
 }
 
-resource "scaleway_server" "machine" {
-  name                = "${var.machine_name}"
-  image               = "${data.scaleway_image.debian.id}"
-  type                = "${var.machine_type}"
-  dynamic_ip_required = true
-
-  connection {
-    type         = "ssh"
-    user         = "root"
-    host         = "${self.private_ip}"
-    bastion_user = "root"
-    bastion_host = "${self.public_ip}"
-    agent        = true
-  }
-
-  provisioner "file" {
-    source      = "./"
-    destination = "/tmp"
-  }
-
-  provisioner "remote-exec" {
-    inline = [
-      "export operator=${var.user}",
-      "cd /tmp",
-      "bash lib/bootstrap.sh"
-    ]
-  }
+module "scaleway" {
+  source       = "./lib/terraform/scaleway"
+  name = "${mvar.machine_name}"
 }

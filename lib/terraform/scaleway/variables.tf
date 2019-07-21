@@ -1,11 +1,3 @@
-variable "organization_key" {}
-variable "secret_key" {}
-
-variable "region" {
-  description = "Specify the region"
-  default     = "ams1"
-}
-
 variable "machine_name" {
   description = "Specify the machine name"
 }
