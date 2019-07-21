@@ -20,14 +20,15 @@ resource "scaleway_server" "machine" {
   }
 
   provisioner "file" {
-    source      = "."
+    source      = "./"
     destination = "/tmp"
   }
 
   provisioner "remote-exec" {
     inline = [
       "export operator=${var.user}",
-      "bash scripts/bootstrap.sh"
+      "cd /tmp",
+      "bash lib/bootstrap.sh"
     ]
   }
 }

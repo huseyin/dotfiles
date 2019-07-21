@@ -5,6 +5,9 @@
 
 - remote: https://github.com/omu/debian
   files:
+    - source: etc/zsh
+      target: etc
+
     - source: lib/scripts/base/font.sh
       target: lib/scripts/base
 
