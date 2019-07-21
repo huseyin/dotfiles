@@ -29,6 +29,10 @@ variable "nodes" {
   default     = 1
 }
 
+variable "user" {
+  description = "Specify the user name"
+}
+
 variable "ssh_key" {
   description = "Specify the SSH key path"
   default     = "~/.ssh/id_rsa"

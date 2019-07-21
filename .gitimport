@@ -6,16 +6,19 @@
 - remote: https://github.com/omu/debian
   files:
     - source: lib/scripts/base/font.sh
-      target: scripts/catalog/base
+      target: lib/scripts/base
+
+    - source: lib/scripts/base/operator.sh
+      target: lib/scripts/base
 
     - source: lib/scripts/base/staff.sh
-      target: scripts/catalog/base
+      target: lib/scripts/base
 
     - source: lib/scripts/base/timezone.sh
-      target: scripts/catalog/base
+      target: lib/scripts/base
 
     - source: lib/scripts/development/debian.sh
-      target: scripts/catalog/development
-      
+      target: lib/scripts/development
+
     - source: lib/scripts/development/shell.sh
-      target: scripts/catalog/development
+      target: lib/scripts/development

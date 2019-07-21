@@ -5,11 +5,29 @@ provider "scaleway" {
 }
 
 resource "scaleway_server" "machine" {
-  name  = "${var.machine_name}"
-  image = "${data.scaleway_image.debian.id}"
-  type  = "${var.machine_type}"
-}
+  name                = "${var.machine_name}"
+  image               = "${data.scaleway_image.debian.id}"
+  type                = "${var.machine_type}"
+  dynamic_ip_required = true
 
-resource "scaleway_ip" "value" {
-  server = "${scaleway_server.machine.id}"
+  connection {
+    type         = "ssh"
+    user         = "root"
+    host         = "${self.private_ip}"
+    bastion_user = "root"
+    bastion_host = "${self.public_ip}"
+    agent        = true
+  }
+
+  provisioner "file" {
+    source      = "."
+    destination = "/tmp"
+  }
+
+  provisioner "remote-exec" {
+    inline = [
+      "export operator=${var.user}",
+      "bash scripts/bootstrap.sh"
+    ]
+  }
 }
