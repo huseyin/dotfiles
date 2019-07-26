@@ -20,8 +20,12 @@ resource "null_resource" "provision" {
   depends_on = ["module.scaleway"]
 
   connection {
-    host  = "${module.scaleway.public_ip}"
-    agent = true
+    type         = "ssh"
+    user         = "root"
+    host         = "${module.scaleway.private_ip}"
+    bastion_user = "root"
+    bastion_host = "${module.scaleway.public_ip}"
+    agent        = true
   }
 
   provisioner "file" {
@@ -39,7 +43,9 @@ resource "null_resource" "provision" {
   provisioner "remote-exec" {
     inline = [
       "export operator=${var.operator}",
-      "bash /tmp/lib/scripts/scripts.sh"
+      "cd /tmp/lib/scripts",
+      "bash scripts.sh",
+      "cd /tmp"
     ]
   }
 
