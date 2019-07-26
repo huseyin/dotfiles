@@ -4,17 +4,17 @@
 source <(curl -fsSL https://she.alaturka.io/source) -boot
 
 enter ./base
-	run font
-	run operator
-	run staff
-	run timezone
+        run font
+        run operator
+        run staff
+        run timezone
 leave
 
 enter ./development
-	run debian
-	run shell
+        run debian
+        run shell
 leave
 
 enter ./other
-	run zsh
+        run zsh
 leave

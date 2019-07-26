@@ -10,6 +10,6 @@ set -euo pipefail; [[ -z ${TRACE:-} ]] || set -x
 
 export DEBIAN_FRONTEND=noninteractive
 
-enter ./lib/processors; run pre;     leave
-enter ./lib/scripts;    run scripts; leave
-enter ./lib/processors; run post;    leave
+enter ../lib/processors; run pre;     leave
+enter ../lib/scripts;    run scripts; leave
+enter ../lib/processors; run post;    leave
