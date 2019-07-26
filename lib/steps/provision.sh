@@ -18,5 +18,7 @@ enter "$(dirname "$0")/../scripts"
 
         enter ./other
                 run zsh
+                run mc
+                run tmux
         leave
 leave

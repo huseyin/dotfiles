@@ -8,6 +8,18 @@
     - source: etc/zsh
       target: etc
 
+    - source: etc/tmux/tmux/conf.d
+      target: etc/tmux
+
+    - source: etc/tmux/tmux/hooks
+      target: etc/tmux
+
+    - source: etc/tmux/tmux.conf
+      target: etc/tmux
+
+    - source: etc/mc
+      target: etc
+
     - source: lib/scripts/base/font.sh
       target: lib/scripts/base
 

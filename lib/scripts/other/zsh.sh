@@ -12,5 +12,11 @@ apt-get -y install --no-install-recommends zsh
 
 chsh -s "$(command -v zsh)" "$operator"
 
-# Mute Zsh for new users
 su - "$operator" -c 'touch ~/.zshrc'
+
+for i in zprofile zshrc zlogin; do
+        mkdir -p "/etc/zsh/$i.d"
+        if [[ -f "/etc/zsh/$i" ]] && [[ ! -f /etc/zsh/$i.d/0dist.sh ]]; then
+                mv "/etc/zsh/$i" "/etc/zsh/$i.d/0dist.sh"
+        fi
+done
