@@ -34,25 +34,21 @@ resource "null_resource" "provision" {
   }
 
   provisioner "remote-exec" {
-    when   = "create"
     inline = [
-      "bash /tmp/lib/processors/pre.sh"
+      "bash /tmp/lib/steps/pre.sh"
     ]
   }
 
   provisioner "remote-exec" {
     inline = [
       "export operator=${var.operator}",
-      "cd /tmp/lib/scripts",
-      "bash scripts.sh",
-      "cd /tmp"
+      "bash /tmp/lib/steps/provision.sh"
     ]
   }
 
   provisioner "remote-exec" {
-    when   = "destroy"
     inline = [
-      "bash /tmp/lib/processors/post.sh"
+      "bash /tmp/lib/steps/post.sh"
     ]
   }
 }
