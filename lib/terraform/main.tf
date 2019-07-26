@@ -25,15 +25,28 @@ resource "null_resource" "provision" {
   }
 
   provisioner "file" {
-    source      = "../"
+    source      = "../../"
     destination = "/tmp"
+  }
+
+  provisioner "remote-exec" {
+    when   = "create"
+    inline = [
+      "bash /tmp/lib/processors/pre.sh"
+    ]
   }
 
   provisioner "remote-exec" {
     inline = [
       "export operator=${var.operator}",
-      "cd /tmp/terraform",
-      "bash bootstrap.sh"
+      "bash /tmp/lib/scripts/scripts.sh"
+    ]
+  }
+
+  provisioner "remote-exec" {
+    when   = "destroy"
+    inline = [
+      "bash /tmp/lib/processors/post.sh"
     ]
   }
 }
@@ -42,9 +55,9 @@ output "welcome" {
   value = <<EOT
 Hey, you've successfully created a machine. It's time to fun!
 Here are informations about the machine:
-    Public IP:       ${module.scaleway.public_ip}
-    Private IP:      ${module.scaleway.private_ip}
-    SSH command:     ssh ${var.operator}@${module.scaleway.public_ip}
-    SSHCode command: sshcode ${var.operator}@${module.scaleway.public_ip}
+    Private IP: ${module.scaleway.private_ip}
+    Public IP:  ${module.scaleway.public_ip}
+    SSH:        ssh ${var.operator}@${module.scaleway.public_ip}
+    SSHCode:    sshcode ${var.operator}@${module.scaleway.public_ip}
   EOT
 }
