@@ -15,11 +15,6 @@ variable "region" {
   default     = "ams1"
 }
 
-variable "user" {
-  description = "Specify the user name"
-  default     = "op"
-}
-
 variable "arch" {
   description = "Specify the OS arch"
   default     = "x86_64"
