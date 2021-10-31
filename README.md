@@ -13,11 +13,18 @@ something may change depending on your local configurations, therefore, you may
 face unexpected issues. Then pay more attention than usual when copying anything
 though.
 
+Prepare
+-------
+
+The recent versions of MacOS (preferably >= 12) have these configs written all
+over it for less painful adjustment. Please fully ensure that you are running
+on the recommended system.
+
 Install
 -------
 
 To install
 
 ```sh
-brew install
+make install
 ```
